@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Страница приложения appmain")
+    return render(request, 'appmain/index.html')
