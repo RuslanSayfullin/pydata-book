@@ -1,5 +1,5 @@
 from pathlib import Path
-from backend.psw import secret_key      # импорт секретного ключа
+from backend.psw import secret_key, client_id, client_secret  # импорт секретного ключа
 from .settings_db import DATABASES      # импорт данных для "базы данных"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -11,8 +11,8 @@ SECRET_KEY = secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '80.78.244.196', 'chiffre.tech', 'localhost']
-INTERNAL_IPS = ('127.0.0.1', '80.78.244.196', 'chiffre.tech', 'localhost')   # кортеж с перечнем IP-адресов, с которых может вестись разработка.
+ALLOWED_HOSTS = ['127.0.0.1', '80.78.244.196', 'reckoning.ru', 'localhost']
+INTERNAL_IPS = ('127.0.0.1', '80.78.244.196', 'reckoning.ru', 'localhost')   # кортеж с перечнем IP-адресов, с которых может вестись разработка.
 
 
 # Application definition
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 ] + [
     'appmain.apps.AppmainConfig',
+    'oauth2mailru.apps.Oauth2MailruConfig',
 ]
 
 MIDDLEWARE = [
@@ -38,6 +39,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',  # Набор панелей, появляющихся на странице в режиме отладки
+    'backend.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -105,7 +107,21 @@ MEDIA_ROOT = [
     BASE_DIR / 'media',    # Абсолютный путь в файловой системе, с каталогом, где файлы, загруженные пользователями.
 ]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+# Для авторизаций и аутентификаций
+LOGIN_URL = 'auth:login'
+LOGIN_REDIRECT_URL = 'auth:logout'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'oauth2mailru.backends.MailRuBackend',
+)
+
+OAUTH_MAIL_RU_CLIENT_ID = client_id
+OAUTH_MAIL_RU_CLIENT_SECRET = client_secret
+OAUTH_MAIL_RU_REDIRECT_URI = 'http://reckoning.ru/auth/mailru/'
+
+LOGO_NAME = "Ре-Форма"
+
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
