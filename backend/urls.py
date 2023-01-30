@@ -1,11 +1,12 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
 from django.conf.urls.static import static
 
 from backend import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path(r'^auth/', include('oauth2mailru.urls', namespace="auth")),
     path('', include('appmain.urls')),
 ]
 
