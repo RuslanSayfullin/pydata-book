@@ -12,5 +12,5 @@ class Reckoning(models.Model):
         return self.client_data
 
     class Meta:
-        verbose_name = 'Клиент'
-        verbose_name_plural = 'Клиенты'
+        verbose_name = 'Просчёт'
+        verbose_name_plural = 'Просчёты'

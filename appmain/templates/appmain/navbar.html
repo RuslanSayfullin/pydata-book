@@ -1,3 +1,8 @@
+{% load cache %}
+
+{% load designer_item_sd from reckoning %}
+{% designer_item_sd as designer_item_sd %}
+
 <header>
   {% if user.is_authenticated %}
   <nav class="navbar navbar-expand-lg bg-success p-2 text-dark bg-opacity-25">
@@ -8,33 +13,36 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Главная</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Ссылка</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Выпадающий список
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Действие</a></li>
-              <li><a class="dropdown-item" href="#">Другое действие</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Отключенная</a>
-          </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Дизайнеры <span class="caret"></span>
+             </a>
+             {% cache 30 designer_items request.user.username %}
+             <ul class="dropdown-menu multi-column columns-3">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <ul class="multi-column-dropdown" role="menu">
+                    <li role="presentation" class="dropdown-header">Салон</li>
+                      {% for d in designer_item_sd %}
+                        <li class="{% if d.username == designer.username %}active{% endif %}">
+                            <a href="{% url 'reckoning_view' d.username %}">
+                                {{ d.get_full_name }}
+                            </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+             </ul>
+             {% endcache %}
+           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
-          <button class="btn btn-outline-success" type="submit">Поиск</button>
-        </form>
       </div>
     </div>
   </nav>
   {% endif %}
 </header>
+
+
+
+
