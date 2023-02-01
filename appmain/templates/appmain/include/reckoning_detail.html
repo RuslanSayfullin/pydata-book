@@ -1,0 +1,9 @@
+{% load static %}
+
+{% for reckoning in reckoning_items %}
+    <div class="panel panel-default reckoningunit">
+        <div class="panel-body">
+            {% include "appmain/include/client_detail.html" %}
+        </div>
+    </div>
+{% endfor %}
