@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^auth/', include('oauth2mailru.urls', namespace="auth")),
     path('', include('appmain.urls')),
+    path('presentation/', include('presentation.urls')),
 ]
 
 if settings.DEBUG:

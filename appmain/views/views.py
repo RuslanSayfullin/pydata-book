@@ -10,6 +10,7 @@ def index(request):
     return render(request, 'appmain/index.html')
 
 
+# Функционал для кабинета дизайнера
 class ReckoningPermissionMixin(object):
     designer = None
 
@@ -45,7 +46,7 @@ class ReckoningView(ReckoningDesignerView):
 
     def get_reckoning(self):
 
-        reckoning_items = Reckoning.objects.all()
+        reckoning_items = Reckoning.objects.all().order_by("-date")
         return reckoning_items
 
     def get_queryset(self):

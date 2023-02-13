@@ -3,38 +3,9 @@
 {% block content %}
     <br>
     <div class="container">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                Создать новое КП
-              </button>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">
-
-                  <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Дизайнер</span>
-                      <input type="text" class="form-control" placeholder="ФИО дизайнера" aria-label="ФИО дизайнера" aria-describedby="basic-addon1">
-                  </div>
-                  <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon2">Клиент__</span>
-                      <input type="text" class="form-control" placeholder="Клиент" aria-label="Клиент" aria-describedby="basic-addon1">
-                  </div>
-                  <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon3">Телефон_</span>
-                      <input type="text" class="form-control" placeholder="Телефон" aria-label="Телефон" aria-describedby="basic-addon1">
-                  </div>
-                  <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon4">Дата____</span>
-                      <input type="text" class="form-control" placeholder="Дата" aria-label="Дата" aria-describedby="basic-addon1">
-                  </div>
-                  <br>
-                  <button type="button" class="btn btn-outline-primary">Сохранить</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a class="btn btn-outline-success" href="{% url 'new_reckoning_url' %}">
+            Создать новое КП
+        </a>
     </div>
     <br>
 {% endblock content %}
