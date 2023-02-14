@@ -1,0 +1,14 @@
+{% load static %}
+
+{% for reckoning in reckoning_items %}
+    <div class="panel panel-default reckoningunit">
+        <div class="panel-body">
+            {% include "appmain/include/client_detail.html" %}
+        </div>
+        <a class="btn btn-info go_to_offer" href="{% url 'presentation:create_update' reckoning.uuid %}">Перейти к КП</a>&nbsp;
+        <a class="btn btn-secondary" href="{% url 'presentation:total_chek' reckoning.uuid %}">Итоговая таблица</a>
+        <br>
+        <span class="text-muted pull-right hidden-xs hidden-sm hidden-md">№ заявки: {{ reckoning.id }}, 1C-код: {{ reckoning.uuid }}&nbsp</span>
+        <br>
+    </div>
+{% endfor %}
