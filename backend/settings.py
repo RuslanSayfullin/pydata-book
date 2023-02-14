@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'appmain.apps.AppmainConfig',
     'oauth2mailru.apps.Oauth2MailruConfig',
     'presentation.apps.PresentationConfig',
+    'staff.apps.StaffConfig',
 ]
 
 MIDDLEWARE = [
