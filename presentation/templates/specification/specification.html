@@ -14,16 +14,19 @@ try{
 theViewer.defaultViewer = new theViewer.Viewer({});
 }catch(e){}
 </script>
-<title></title>
+<title>Бланк спецификаций</title>
 <style>@media print{@page {size: landscape; margin-top:-0.1cm}}</style>
 </head>
 <body>
 <div id="sidebar">
-<div id="outline">
-</div>
+    <div id="outline">
+    </div>
 </div>
 <div id="page-container">
-<div id="pf1" class="pf w0 h0" data-page-no="1"><div class="pc pc1 w0 h0"><img class="bi x0 y0 w1 h1" alt="" src="{% static 'print_blank/print_blank_2/bg1.png' %}"/><div class="t m0 x1 h2 y1 ff1 fs0 fc0 sc0 ls0 ws0">Адрес<span class="ff2"> </span>{% if froze.dogovor.adres_ustanovki %}{{ froze.dogovor.adres_ustanovki }}{% elif froze.client.address %}{{ froze.client.address }}{% if froze.client.room %}, кв {{ froze.client.room }}{% endif %}{% endif %}</div>
+<div id="pf1" class="pf w0 h0" data-page-no="1">
+    <div class="pc pc1 w0 h0"><img class="bi x0 y0 w1 h1" alt="" src="{% static 'print_blank/print_blank_2/bg1.png' %}"/>
+
+    <div class="t m0 x1 h2 y1 ff1 fs0 fc0 sc0 ls0 ws0">Адрес<span class="ff2"> </span>{% if froze.dogovor.adres_ustanovki %}{{ froze.dogovor.adres_ustanovki }}{% elif froze.client.address %}{{ froze.client.address }}{% if froze.client.room %}, кв {{ froze.client.room }}{% endif %}{% endif %}</div>
     <div class="t m1 x2 h2 y1 ff1 fs0 fc0 sc0 ls0 ws0">№<span class="ff2"> <span class="_ _0"></span><span class="ff1">до<span class="_ _1"></span>го<span class="_ _1"></span>во<span class="_ _1"></span>ра<span class="_ _1"></span><span class="ff2"> {{ nomer_dogovora }}</span></span></span></div>
     <div class="t m2 x3 h2 y1 ff2 fs0 fc1 sc0 ls0 ws0"> </div><div class="t m3 x4 h2 y1 ff2 fs0 fc1 sc0 ls0 ws0"> </div>
     <div class="t m3 x1 h3 y2 ff3 fs0 fc1 sc0 ls0 ws0"> </div>
@@ -32,15 +35,21 @@ theViewer.defaultViewer = new theViewer.Viewer({});
     <div class="t m2 x7 h2 y2 ff2 fs0 fc0 sc0 ls0 ws0"> </div>
     <div class="t m4 x8 h4 y3 ff1 fs1 fc0 sc0 ls0 ws0">(Фамилия<span class="ff2"> </span>И.О.)<span class="_ _2"> </span>(Подпись)</div><div class="t m0 x9 h4 y3 ff1 fs1 fc0 sc0 ls0 ws0">(Фамилия<span class="ff2"> </span>И.О.)</div></div>
 
- <div class="t m1 x9 h2 y4 ff1 fs0 fc0 sc0 ls0 ws0">Дата выезда на ТЗ <span class="ff1"> {{ active_tz.datetime|date:'d.m.Y' }} </span>в<span class="ff1"> {{ active_tz.datetime|date:'H:i' }}</span></div>
+    <div class="t m1 x9 h2 y4 ff1 fs0 fc0 sc0 ls0 ws0">Дата выезда на ТЗ <span class="ff1"> {{ active_tz.datetime|date:'d.m.Y' }} </span>в<span class="ff1"> {{ active_tz.datetime|date:'H:i' }}</span></div>
 
     <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+    <div class="pc pc1 w0 h0">
+        <div class="t m0 x8 h6 ff8 fs0 fc0 sc0 ls0 ws0">
+            <br>
+            <p align="center"><b>Спецификация</b></p>
+        </div>
+    </div>
 
-
-
+    <div class="t m2 x7 h2 y2 ff2 fs0 fc0 sc0 ls0 ws0">Спецификация</div>
 
 </div>
 </div>
+
 <div class="loading-indicator">
 
 </div>
