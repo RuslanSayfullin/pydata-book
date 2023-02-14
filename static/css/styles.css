@@ -52,6 +52,8 @@ footer {
 .go_to_offer {
     margin-left: 35px;
 }
-
+form.dogovora .input-group .form-control:first-child, .input-group .form-control:last-child {
+    border-radius: 4px !important;
+}
 
 

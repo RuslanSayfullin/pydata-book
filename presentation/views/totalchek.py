@@ -22,7 +22,7 @@ def total_chek(request, reckoning_uuid):
         total_cost[key] = specification[key]
         try:
             total_cost['total_price'] += int(specification[key]['spec_price'])
-            total_cost['total_discounted_price'] += int(specification[key]['total_discounted_price'])
+            total_cost['total_discounted_price'] += int(specification[key]['spec_discounted_price'])
         except TypeError:
             continue
 
@@ -40,5 +40,5 @@ def total_chek(request, reckoning_uuid):
         except ValueError:
             pass
 
-    return render(request, 'presentation/total_chek_create_update.html', {'reckoning_uuid': reckoning_uuid, 'reckoning': reckoning, 'specification': specification, 'total_chek': True, })
-
+    return render(request, 'presentation/total_chek_create_update.html',
+                  {'reckoning_uuid': reckoning_uuid, 'reckoning': reckoning, 'specification': specification, 'total_chek': True, })
