@@ -38,8 +38,8 @@ def specification_main_view(request, reckoning_uuid):
             for key in (x for x in range(1, 16)):
                 specification_chek[key] = the_dict[str(key)]
                 try:
-                    specification_chek[key]['total_price'] = int(specification_chek[key]['total_price'])
-                    specification_chek[key]['total_discounted_price'] += int(specification_chek[key]['total_discounted_price'])
+                    specification_chek['total_price'] += int(specification_chek[key]['spec_price'])
+                    specification_chek['total_discounted_price'] += int(specification_chek[key]['spec_discounted_price'])
                 except TypeError:
                     continue
         except ValueError:
