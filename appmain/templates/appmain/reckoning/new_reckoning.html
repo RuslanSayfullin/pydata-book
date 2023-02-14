@@ -35,7 +35,7 @@
 
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" id="phone" name="phone"
-                                           {% if form.phone_client.value %}
+                                           {% if form.phone.value %}
                                            data-inputmask="'mask': '+9(999) 9999-999'"
                                            {% else %}
                                            data-inputmask="'mask': '+7(999) 9999-999'"
@@ -50,7 +50,7 @@
                                 <div class="col-md-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                                        <input type="text" class="form-control" id="date" name="date" value="{{ form.date.value }}"/>
+                                        <input type="text" class="form-control" id="date" name="date"    placeholder="Укажите дату в формате дд.мм.гггг" value="{{ form.date.value }}"/>
                                     </div>
                                     {% for error in form.date.errors %}<span class="text-danger">{{ error|escape }}</span>{% endfor %}
                                 </div>
@@ -62,23 +62,15 @@
                                 </div>
                             </div>
                         </form>
+                        <script>
+                        $(function(){
+	                        $("#date").datepicker();
+                        });
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 {% endblock content %}
-<link href="{% static "datetimepicker/jquery.datetimepicker.css" %}" type="text/css" media="all" rel="stylesheet"/>
-<script type="text/javascript" src="{% static "datetimepicker/jquery.datetimepicker.js" %}"></script>
-<script type="text/javascript">
-    $("input[name='date']").datetimepicker({
-      'lang': 'ru',
-      'dayOfWeekStart': 1,
-      'format': "d.m.Y",
-      'closeOnDateSelect': true,
-      'timepicker': false,
-      'minDate': "{% now "d.m.Y" %}",
-      'scrollInput': false,
-      'scrollMonth': false
-    });
-</script>
+
