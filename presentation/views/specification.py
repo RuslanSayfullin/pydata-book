@@ -27,26 +27,23 @@ def specification_main_view(request, reckoning_uuid):
             '"13": {"spec_nomination": null, "spec_price": null, "spec_discounted_price": null}, ' \
             '"14": {"spec_nomination": null, "spec_price": null, "spec_discounted_price": null}, ' \
             '"15": {"spec_nomination": null, "spec_price": null, "spec_discounted_price": null}, ' \
-            '"16": {"spec_nomination": null, "spec_price": null, "spec_discounted_price": null}, ' \
             '}'
     if reckoning.specification and reckoning.specification != sravn:
         try:
             specification_chek = {}
             the_dict = loads(reckoning.specification)
-            specification_chek['total_price'] = 0
-            specification_chek['total_discounted_price'] = 0
+
             for key in (x for x in range(1, 16)):
-                specification_chek[key] = the_dict[str(key)]
-                try:
-                    specification_chek['total_price'] += int(specification_chek[key]['spec_price'])
-                    specification_chek['total_discounted_price'] += int(specification_chek[key]['spec_discounted_price'])
-                except TypeError:
+                if the_dict[str(key)]['spec_nomination'] == None:
                     continue
+                else:
+                    specification_chek[key] = the_dict[str(key)]
         except ValueError:
             specification_chek = {'don_t_print': True}
     else:
         specification_chek = {'don_t_print': True}
 
+    print(specification_chek)
     return render(request, template, {
         'reckoning': reckoning,
         'specification_chek': specification_chek,
