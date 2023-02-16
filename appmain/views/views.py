@@ -29,8 +29,9 @@ class ReckoningPermissionMixin(object):
 
 
 class ReckoningDesignerView(ReckoningPermissionMixin, generic.ListView):
-    template_name = 'appmain/reckoning_designer.html'
+    template_name = 'appmain/reckoning/reckoning_designer.html'
     context_object_name = "reckoning_items"
+    paginate_by = 5
 
     def dispatch(self, *args, **kwargs):
         # <права доступа...

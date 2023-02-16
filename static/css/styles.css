@@ -1,27 +1,25 @@
 CSS-код:
 
+/* footer */
 * {
 	margin: 0;
 	padding: 0;
 }
 html,
-body {
+body,
+.wrapper {
 	height: 100%;
 }
-.wrapper {
-	position: relative;
+.content {
+	box-sizing: border-box;
 	min-height: 100%;
-}
-content {
 	padding-bottom: 90px;
 }
-footer {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
+.footer {
 	height: 80px;
+	margin-top: -80px;
 }
+/* footer */
 
 .reckoningunit {
     margin-bottom: 20px;
@@ -56,4 +54,7 @@ form.dogovora .input-group .form-control:first-child, .input-group .form-control
     border-radius: 4px !important;
 }
 
+/* Пагинация */
+
+/* Пагинация */
 
