@@ -34,7 +34,7 @@ def specification_main_view(request, reckoning_uuid):
             the_dict = loads(reckoning.specification)
 
             for key in (x for x in range(1, 16)):
-                if the_dict[str(key)]['spec_nomination'] == None:
+                if not the_dict[str(key)]['spec_nomination']:   # если spec_nomination == null
                     continue
                 else:
                     specification_chek[key] = the_dict[str(key)]
@@ -43,7 +43,6 @@ def specification_main_view(request, reckoning_uuid):
     else:
         specification_chek = {'don_t_print': True}
 
-    print(specification_chek)
     return render(request, template, {
         'reckoning': reckoning,
         'specification_chek': specification_chek,

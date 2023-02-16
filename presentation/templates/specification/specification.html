@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="{% static 'print_blank/print_blank_2/base.min.css' %}?v=1"/>
 <link rel="stylesheet" href="{% static 'print_blank/print_blank_2/fancy.min.css' %}?v=1"/>
 <link rel="stylesheet" href="{% static 'print_blank/print_blank_2/main.css' %}?v=1"/>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<!--<link rel="preconnect" href="https://fonts.gstatic.com">-->
+<!--<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">-->
 <script src="{% static 'print_blank/print_blank_2/compatibility.min.js' %}?v=1"></script>
 <script src="{% static 'print_blank/print_blank_2/theViewer.min.js' %}?v=1"></script>
 <script>
@@ -47,8 +47,8 @@ theViewer.defaultViewer = new theViewer.Viewer({});
 
                     <tr>
                         <td align="center">Итого</td>
-                        <td align="center"><v>{{ reckoning.total_price|default:'' }}</v> р.</td>
-                        <td align="center" class="fc2"><v>{{ reckoning.total_discounted_price|default:'' }}</v> р.</td>
+                        <td align="center"><v>{{ reckoning.total_price|default:'0' }}</v> р.</td>
+                        <td align="center" class="fc2"><v>{{ reckoning.total_discounted_price|default:'0' }}</v> р.</td>
                     </tr>
                 </tbody>
             </table>

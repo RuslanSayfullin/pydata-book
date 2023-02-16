@@ -1,13 +1,3 @@
-.ff0{font-family:sans-serif;visibility:hidden;}
-@font-face{font-family:ff1;src:url(f1.woff)format("woff");}.ff1{font-family:ff1;line-height:1.096680;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff2;src:url(f2.woff)format("woff");}.ff2{font-family:ff2;line-height:1.096680;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff3;src:url(f3.woff)format("woff");}.ff3{font-family:ff3;line-height:0.690918;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff4;src:url(f4.woff)format("woff");}.ff4{font-family:ff4;line-height:0.942871;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff5;src:url(f5.woff)format("woff");}.ff5{font-family:ff5;line-height:0.942871;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff6;src:url(f6.woff)format("woff");}.ff6{font-family:ff6;line-height:0.895996;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff7;src:url(f7.woff)format("woff");}.ff7{font-family:ff7;line-height:0.895996;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff8;src:url(f8.woff)format("woff");}.ff8{font-family:ff8;line-height:0.942871;font-style:normal;font-weight:normal;visibility:visible;}
-@font-face{font-family:ff9;src:url(f9.woff)format("woff");}.ff9{font-family:ff9;line-height:0.942871;font-style:normal;font-weight:normal;visibility:visible;}
 .m9{transform:matrix(0.150000,0.000000,0.000000,0.250000,0,0);-ms-transform:matrix(0.150000,0.000000,0.000000,0.250000,0,0);-webkit-transform:matrix(0.150000,0.000000,0.000000,0.250000,0,0);}
 .m3{transform:matrix(0.162500,0.000000,0.000000,0.250000,0,0);-ms-transform:matrix(0.162500,0.000000,0.000000,0.250000,0,0);-webkit-transform:matrix(0.162500,0.000000,0.000000,0.250000,0,0);}
 .m2{transform:matrix(0.175000,0.000000,0.000000,0.250000,0,0);-ms-transform:matrix(0.175000,0.000000,0.000000,0.250000,0,0);-webkit-transform:matrix(0.175000,0.000000,0.000000,0.250000,0,0);}
