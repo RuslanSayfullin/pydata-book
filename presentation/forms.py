@@ -1,5 +1,5 @@
 from django import forms
 
 
-class DogovorForm(forms.Form):
+class OfferpageForm(forms.Form):
     pass

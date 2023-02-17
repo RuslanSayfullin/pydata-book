@@ -7,7 +7,7 @@ from django.shortcuts import render
 
 def specification_main_view(request, reckoning_uuid):
     reckoning = get_object_or_404(Reckoning, uuid=reckoning_uuid)
-    template = 'specification/specification.html'
+    template = 'presentation/specification/specification.html'
 
     # Спецификация
     specification_chek = None
