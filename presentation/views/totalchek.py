@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
-from rest_framework.generics import get_object_or_404
+
 from json import loads, dumps
 from appmain.models import Reckoning
 

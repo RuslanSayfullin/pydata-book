@@ -1,5 +1,11 @@
 from django import forms
 
+from presentation.models import KitchenOfferpage
 
-class OfferpageForm(forms.Form):
-    pass
+
+class AddKitchenOfferpagePostForm(forms.ModelForm):
+
+    class Meta:
+        model = KitchenOfferpage
+        fields = '__all__'
+
