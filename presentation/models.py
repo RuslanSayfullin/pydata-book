@@ -13,6 +13,8 @@ class KitchenOfferpage(models.Model):
     accessories = models.CharField(max_length=250, verbose_name="Фурнитура")
     sketch = models.ImageField(upload_to="sketch/%Y/%m/%d/", verbose_name="Эскиз")
     costcalculation = models.FileField(upload_to='costcalculation/%Y/%m/%d/')
+    total_price = models.PositiveIntegerField(default=None, blank=True, null=True)
+    total_discounted_price = models.PositiveIntegerField(default=None, blank=True, null=True)
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Время изменения")
 

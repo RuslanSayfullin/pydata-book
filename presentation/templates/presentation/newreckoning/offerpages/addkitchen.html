@@ -3,21 +3,91 @@
 
 {% block content %}
 <br>
-<form action="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    <div class="form-error">{{ form.non_field_errors }}</div>
-
-    {% for f in form %}
-    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
-
-
-    <button type="submit">Добавить</button>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 col-md-offset-2">
+                    <h3 class="text-muted">КП Кухонный гарнитур</h3><br>
+                    <form action="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                                <label for="{{ field.auto_id }}" class="col-sm-3 control-label">{{ field.label }}</label>
+                                {% if field.auto_id == 'id_upperfacades' or field.auto_id == 'id_lowerfacades' or field.auto_id == 'id_tabletop' or field.auto_id == 'id_other' or field.auto_id == 'id_accessories' %}
+                                    <div class="col-sm-9 input-group">
+										{{ field }}
+									</div>
+                                {% elif field.auto_id == 'id_sketch' %}
+									<div class="input-group mb-3">
+                                          <input type="file" class="form-control" id="inputGroupFile01">
+                                        <label class="input-group-text" for="inputGroupFile01">Загрузка</label>
+									</div>
+                                {% elif field.auto_id == 'id_costcalculation' %}
+									<div class="input-group mb-3">
+                                          <input type="file" class="form-control" id="inputGroupFile02">
+                                        <label class="input-group-text" for="inputGroupFile02">Загрузка</label>
+									</div>
+                                {% elif field.auto_id == 'id_total_price' or field.auto_id == 'id_total_discounted_price' %}
+									<div class="col-sm-3 input-group">
+										{{ field }}
+										<div class="input-group-text">.00 руб.</div>
+									</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <br>
+                        <div class="form-group text-right">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-success">Сохранить данные</button>
+							</div>
+						</div>
+                    </form>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <br>
 {% endblock content %}
+
+
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-2"></div>-->
+<!--        <div class="col-md-8">-->
+<!--                    <h3 class="text-muted" style="text-align:center">-->
+<!--                        КП Кухонный гарнитур-->
+<!--                    </h3>-->
+
+<!--                    <form action="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}" method="post" enctype="multipart/form-data">-->
+<!--                        {% csrf_token %}-->
+
+<!--                        <div class="form-error">{{ form.non_field_errors }}</div>-->
+
+<!--                        {% for f in form %}-->
+<!--                        <p><label class="form-label">{{f.label}}: </label>{{ f }}</p>-->
+<!--                        <div class="form-error">{{ f.errors }}</div>-->
+<!--                        {% endfor %}-->
+
+
+
+<!--                         <div class="form-group text-center">-->
+<!--                            <div class="col-sm-offset-2">-->
+<!--                                <button type="submit" class="btn btn-success">Сохранить данные</button>&nbsp;&nbsp;-->
+<!--                                <a href="{% url 'presentation:view' reckoning_uuid %}" class="btn btn-info">Печать спецификаций</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--        </div>-->
+<!--        <div class="col-md-2"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<br>-->
+
 
 
 
