@@ -36,7 +36,11 @@ class AddKitchenOfferpagePostForm(forms.Form):
                                       'onkeyup': 'oplata_predoplata_and_ostatok();'}))
 
 
+class AddKitchenOfferpageForm(forms.ModelForm):
     class Meta:
         model = KitchenOfferpage
-        fields = ['upperfacades', 'lowerfacades', 'tabletop', 'other', 'accessories', 'sketch', 'costcalculation']
+        fields = ['reckoning', 'upperfacades', 'lowerfacades', 'tabletop', 'other', 'accessories', 'sketch', 'costcalculation', 'total_price', 'total_discounted_price']
+
+
+
 

@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from backend.psw import secret_key, client_id, client_secret  # импорт секретного ключа
 from .settings_db import DATABASES      # импорт данных для "базы данных"
@@ -105,9 +106,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = [
-    BASE_DIR / 'media',    # Абсолютный путь в файловой системе, с каталогом, где файлы, загруженные пользователями.
-]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # Абсолютный путь в файловой системе, с каталогом, где файлы, загруженные пользователями.
 
 
 # Для авторизаций и аутентификаций
