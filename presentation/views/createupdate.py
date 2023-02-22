@@ -15,7 +15,7 @@ from presentation.models import KitchenOfferpage
 def createupdateofferpage(request, reckoning_uuid):
     """Создаём отдельную позицию для каждой единицы мебели в КП."""
     reckoning = get_object_or_404(Reckoning, uuid=reckoning_uuid)
-    return render(request, 'presentation/newreckoning/create_update.html', {'reckoning_uuid': reckoning_uuid, 'reckoning': reckoning})
+    return render(request, 'presentation/newreckoning/offer_pages.html', {'reckoning_uuid': reckoning_uuid, 'reckoning': reckoning})
 
 
 # Функционал для добавления отдельных позиций к КП
@@ -38,7 +38,6 @@ def addkitchenofferpage(request, reckoning_uuid):
     """Добавить страницу к КП для кухонного гарнитура, к отдельным заявкам."""
     reckoning = get_object_or_404(Reckoning, uuid=reckoning_uuid)
     if request.method != "POST":
-
         form = AddKitchenOfferpageForm
         return render(request, 'presentation/newreckoning/offerpages/addkitchen.html',
                       {'form': form, 'reckoning_uuid': reckoning_uuid, 'reckoning': reckoning})
@@ -47,9 +46,12 @@ def addkitchenofferpage(request, reckoning_uuid):
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.reckoning = reckoning
+            #update_reckoning_specification(reckoning)
             new_form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect("offer_pages", {'reckoning_uuid': reckoning_uuid})
 
+#
+# def update_reckoning_specification(request, reckoning):
 
 
 
