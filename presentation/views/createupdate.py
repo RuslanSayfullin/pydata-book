@@ -1,10 +1,8 @@
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
-from django.views import generic
 from django.views.decorators.csrf import csrf_protect
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
+from json import loads, dumps
 
 from appmain.models import Reckoning
 from presentation.forms import AddKitchenOfferpageForm
@@ -36,6 +34,7 @@ def kitchen_offerpages_list(request, reckoning_uuid):
 
 def addkitchenofferpage(request, reckoning_uuid):
     """Добавить страницу к КП для кухонного гарнитура, к отдельным заявкам."""
+    type_of_furniture = "Кухонный гарнитур"
     reckoning = get_object_or_404(Reckoning, uuid=reckoning_uuid)
     if request.method != "POST":
         form = AddKitchenOfferpageForm
@@ -46,12 +45,30 @@ def addkitchenofferpage(request, reckoning_uuid):
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.reckoning = reckoning
-            #update_reckoning_specification(reckoning)
+            update_reckoning_specification(reckoning, new_form, type_of_furniture)
             new_form.save()
             return HttpResponseRedirect("offer_pages", {'reckoning_uuid': reckoning_uuid})
 
-#
-# def update_reckoning_specification(request, reckoning):
+
+def update_reckoning_specification(reckoning, new_form, type_of_furniture):
+    """Обновляем итоговую таблицу КП"""
+    the_dict = loads(reckoning.specification)
+    for key, value in the_dict.items():
+        if the_dict[str(key)]['spec_nomination']:  # если spec_nomination != null
+            continue
+        else:
+            the_dict[str(key)]['spec_nomination'] = type_of_furniture
+            the_dict[str(key)]['spec_price'] = new_form.total_price
+            the_dict[str(key)]['spec_discounted_price'] = new_form.total_discounted_price
+            break
+    the_json = dumps(the_dict)
+    reckoning.specification = the_json
+    reckoning.save()
+
+
+
+
+
 
 
 
