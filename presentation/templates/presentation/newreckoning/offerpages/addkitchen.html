@@ -1,0 +1,46 @@
+{% extends "appmain/base.html" %}
+{% load static %}
+
+{% block content %}
+<br>
+<div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col align-self-center">
+                            <h3 class="text-muted">КП Кухонный гарнитур</h3>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <form method="post" enctype="multipart/form-data" action="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}">
+                    {% csrf_token %}
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+                    {% for f in form %}
+                    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+                    <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+                    <div class="form-group text-right">
+                        <div class="col-md-3 col-md-offset-2">
+                            <input type="submit" onclick="add_new_kitchen_offerpages('{{ reckoning_uuid }}', '{{ csrf_token }}');" class="btn btn-primary" value="Сохранить"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br
+{% endblock content %}
+
+
+
+
+
+
+
+
