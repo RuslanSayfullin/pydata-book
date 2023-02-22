@@ -5,21 +5,29 @@
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <br>
             <div class="accordion" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Кухонный гарнитур
+                        <button type="button" id="addkitchenbtn_{{ reckoning.uuid }}" class="accordion-button collapsed btn btn-success add_kitchen_btn"  onclick="press_add_kitchen_btn('{{ reckoning.uuid }}');" showed="0" kitchen_count="{{ kitchen_offerpage_count }}" reckoninguuid="{{ reckoning.uuid }}" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Кухонный гарнитур({{ kitchen_offerpage_count }})
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <a class="btn btn-outline-success" href="{% url 'presentation:addkitchenofferpage' %}">
+                            <a class="btn btn-outline-success" href="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}">
                                 Создать
                             </a>
+                            <div id="add_kitchen_offerpage_{{ reckoning.uuid }}" class="kitchenoffer"></div>
+                            <div id="kitchen_offerpages_{{ reckoning.uuid }}" class="kitchenoffer"></div>
+
+<!--                            <button type="button" id="chiefbtn_{{ froze.uuid }}" class="btn btn-outline-success comment_chief_btn" onclick="press_the_chief_btn('{{ froze.uuid }}');" showed="0" com_count="{{ chief_comments_count }}" frozeuuid="{{ froze.uuid }}">-->
+<!--							    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Комментарии руководителя ({{ chief_comments_count }})-->
+<!--                            </button>&nbsp;-->
+<!--                            <div id="add_chief_comment_{{ froze.uuid }}" class="comments"></div>-->
+<!--                            <div id="chief_comments_{{ froze.uuid }}" class="comments"></div>-->
+
                         </div>
                     </div>
                 </div>
@@ -55,7 +63,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2"></div>
     </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
