@@ -6,9 +6,11 @@ User = settings.AUTH_USER_MODEL
 
 class Staff(models.Model):
     DEPARTAMENT_D = 0
+    DEPARTAMENT_SDB = 1
 
     DEPARTAMENT_CHOICE = (
         (DEPARTAMENT_D, u"Дизайнеры"),
+        (DEPARTAMENT_SDB, u"Руководитель салон-дизайнеров"),
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Сотрудник")

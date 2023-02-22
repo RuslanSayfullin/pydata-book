@@ -1,12 +1,16 @@
 {% load humanize %}
 
 {% if kitchenofferpages %}
-    <ol class="clearfix">
-    {% for kitchenofferpage in kitchenofferpages %}
-        <li>
-            <h4><span>{{ reckoning }}</span> <small><b>{{ kitchenofferpage.time_create|naturaltime }}</b> ({{ kitchenofferpage.time_create }})</small></h4>
-        </li>
-    {% endfor %}
+    <ol class="reckoningunit">
+        <h3>Ранее добавленные позиций:</h3>
+        <br>
+        {% for kitchenofferpage in kitchenofferpages %}
+            <li class="reckoningunit">
+                <p>&nbsp;Кухонный гарнитур</p>
+                <p>&nbsp;Добавлен:<small><b>{{ kitchenofferpage.time_create|naturaltime }}</b> ({{ kitchenofferpage.time_create }})</small></p>
+            </li>
+            <br>
+        {% endfor %}
     </ol>
 {% else %}
     <p>Нет ни однои позиций.</p>
@@ -14,5 +18,5 @@
 
 <script>
     setTimeout(load_kitchen_offerpages, 30000, "{{ reckoning_uuid }}");
-    setTimeout(update_chiefbtn_count, 30000, "{{ reckoning_uuid }}");
+    setTimeout(update_kitchen_offerpages_count, 30000, "{{ reckoning_uuid }}");
 </script>

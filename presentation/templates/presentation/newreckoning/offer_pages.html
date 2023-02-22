@@ -10,24 +10,27 @@
             <div class="accordion" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
-                        <button type="button" id="addkitchenbtn_{{ reckoning.uuid }}" class="accordion-button collapsed btn btn-success add_kitchen_btn"  onclick="press_add_kitchen_btn('{{ reckoning.uuid }}');" showed="0" kitchen_count="{{ kitchen_offerpage_count }}" reckoninguuid="{{ reckoning.uuid }}" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Кухонный гарнитур({{ kitchen_offerpage_count }})
+                        <button type="button" id="addkitchenbtn_{{ reckoning.uuid }}" onclick="press_add_kitchen_btn('{{ reckoning.uuid }}');" showed="0" kitchen_count="{{ kitchen_offerpage_count }}" class="accordion-button collapsed btn btn-success add_kitchen_btn"  reckoninguuid="{{ reckoning.uuid }}" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Кухонный гарнитур
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <a class="btn btn-outline-success" href="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}">
-                                Создать
-                            </a>
+                            <br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col align-self-center">
+                                        <h3 class="text-muted">КП Кухонный гарнитур ({{ kitchen_offerpage_count }})</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+<!--                            <a class="btn btn-outline-success" href="{% url 'presentation:add_kitchen_offer_page' reckoning.uuid %}">-->
+<!--                                Создать-->
+<!--                            </a>-->
                             <div id="add_kitchen_offerpage_{{ reckoning.uuid }}" class="kitchenoffer"></div>
+                            <br>
                             <div id="kitchen_offerpages_{{ reckoning.uuid }}" class="kitchenoffer"></div>
-
-<!--                            <button type="button" id="chiefbtn_{{ froze.uuid }}" class="btn btn-outline-success comment_chief_btn" onclick="press_the_chief_btn('{{ froze.uuid }}');" showed="0" com_count="{{ chief_comments_count }}" frozeuuid="{{ froze.uuid }}">-->
-<!--							    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Комментарии руководителя ({{ chief_comments_count }})-->
-<!--                            </button>&nbsp;-->
-<!--                            <div id="add_chief_comment_{{ froze.uuid }}" class="comments"></div>-->
-<!--                            <div id="chief_comments_{{ froze.uuid }}" class="comments"></div>-->
-
                         </div>
                     </div>
                 </div>
@@ -63,7 +66,21 @@
                 </div>
             </div>
         </div>
+    <br>
     </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group text-left">
+                <div class="col-sm-offset-2">
+                    <a class="btn btn-secondary" href="{% url 'presentation:total_chek' reckoning.uuid %}">Итоговая таблица</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock content %}

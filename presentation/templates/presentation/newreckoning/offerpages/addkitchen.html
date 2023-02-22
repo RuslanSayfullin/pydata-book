@@ -1,41 +1,82 @@
-{% extends "appmain/base.html" %}
 {% load static %}
-
-{% block content %}
-<br>
-<div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-                <br>
-                <div class="container">
-                    <div class="row">
-                        <div class="col align-self-center">
-                            <h3 class="text-muted">КП Кухонный гарнитур</h3>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <form method="post" enctype="multipart/form-data" action="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}">
-                    {% csrf_token %}
-                    <div class="form-error">{{ form.non_field_errors }}</div>
-                    {% for f in form %}
-                    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-                    <div class="form-error">{{ f.errors }}</div>
-                    {% endfor %}
-                    <div class="form-group text-right">
-                        <div class="col-md-3 col-md-offset-2">
-                            <input type="submit" onclick="add_new_kitchen_offerpages('{{ reckoning_uuid }}', '{{ csrf_token }}');" class="btn btn-primary" value="Сохранить"/>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<form method="post" enctype="multipart/form-data" action="{% url 'presentation:add_kitchen_offer_page' reckoning.uuid %}">
+    {% csrf_token %}
+    <div class="form-group{% if form.upperfacades.errors %} has-error{% endif %}">
+        <label for="id_upperfacades_{{ reckoning_uuid }}" class="col-sm-2 control-label">Фасады (верх):</label>
+        <div class="col-sm-10">
+            <input id="id_upperfacades_{{ reckoning_uuid }}" maxlength="250" name="upperfacades" type="text" class="form-control" required>
+            {% if form.upperfacades.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
         </div>
-        <div class="col-md-2"></div>
     </div>
-<br><br><br><br><br><br><br><br><br><br><br
-{% endblock content %}
+    <div class="form-group{% if form.lowerfacades.errors %} has-error{% endif %}">
+        <label for="id_lowerfacades_{{ reckoning_uuid }}" class="col-sm-2 control-label">Фасады (низ):</label>
+        <div class="col-sm-10">
+            <input id="id_lowerfacades_{{ reckoning_uuid }}" maxlength="250" name="lowerfacades" type="text" class="form-control" required>
+            {% if form.lowerfacades.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+    <div class="form-group{% if form.tabletop.errors %} has-error{% endif %}">
+        <label for="id_tabletop_{{ reckoning_uuid }}" class="col-sm-2 control-label">Столешница:</label>
+        <div class="col-sm-10">
+            <input id="id_tabletop_{{ reckoning_uuid }}" maxlength="250" name="tabletop" type="text" class="form-control" required>
+            {% if form.tabletop.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+    <div class="form-group{% if form.other.errors %} has-error{% endif %}">
+        <label for="id_other_{{ reckoning_uuid }}" class="col-sm-2 control-label">Прочее:</label>
+        <div class="col-sm-10">
+            <input id="id_other_{{ reckoning_uuid }}" maxlength="250" name="other" type="text" class="form-control" required>
+            {% if form.other.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+    <div class="form-group{% if form.accessories.errors %} has-error{% endif %}">
+        <label for="id_accessories_{{ reckoning_uuid }}" class="col-sm-2 control-label">Фурнитура:</label>
+        <div class="col-sm-10">
+            <input id="id_accessories_{{ reckoning_uuid }}" maxlength="250" name="accessories" type="text" class="form-control" required>
+            {% if form.accessories.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+    <div class="form-group{% if form.sketch.errors %} has-error{% endif %}">
+        <label for="id_sketch_{{ reckoning_uuid }}" class="col-sm-2 control-label">Эскиз:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="id_sketch_{{ reckoning_uuid }}" name="sketch" aria-describedby="id_sketch_{{ reckoning_uuid }}" aria-label="Загрузка">
+            {% if form.sketch.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+    <div class="form-group{% if form.costcalculation.errors %} has-error{% endif %}">
+        <label for="id_costcalculation_{{ reckoning_uuid }}" class="col-sm-2 control-label">Расчёт стоимости:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="id_costcalculation_{{ reckoning_uuid }}" name="costcalculation" aria-describedby="id_costcalculation_{{ reckoning_uuid }}" aria-label="Загрузка">
+            {% if form.costcalculation.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+    <div class="form-group{% if form.total_price.errors %} has-error{% endif %}">
+        <label for="id_total_price_{{ reckoning_uuid }}" class="col-sm-2 control-label">Стоимость:</label>
+        <div class="col-sm-8 input-group mb-3">
+            <span class="input-group-text">₽</span>
+            <input id="id_total_price_{{ reckoning_uuid }}" maxlength="250" name="total_price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <span class="input-group-text">.00</span>
+            {% if form.total_price.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+    <div class="form-group{% if form.total_discounted_price.errors %} has-error{% endif %}">
+        <label for="id_total_discounted_price_{{ reckoning_uuid }}" class="col-sm-2 control-label">Стоимость со скидкой:</label>
+        <div class="col-sm-8 input-group mb-3">
+            <span class="input-group-text">₽</span>
+            <input id="id_total_discounted_price_{{ reckoning_uuid }}" maxlength="250" name="total_discounted_price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <span class="input-group-text">.00</span>
+            {% if form.total_discounted_price.errors %}<span class="glyphicon glyphicon-remove form-control-feedback"></span>{% endif %}
+        </div>
+    </div>
+
+
+    <br>
+    <div class="form-group text-right">
+        <div class="col-md-3 col-md-offset-2">
+            <input type="submit" onclick="add_new_kitchen_offerpages('{{ reckoning_uuid }}', '{{ csrf_token }}');" class="btn btn-primary" value="Сохранить"/>
+        </div>
+    </div>
+</form>
 
 
 
