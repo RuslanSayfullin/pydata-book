@@ -9,6 +9,8 @@ urlpatterns = [
 
     re_path(r'^(?P<reckoning_uuid>\w+)/add_kitchen_offer_page$', views.addkitchenofferpage, name="add_kitchen_offer_page"),
     re_path(r'^(?P<reckoning_uuid>\w+)/kitchen_offerpages_list$', views.kitchen_offerpages_list, name='kitchen_offerpages_list'),
+    re_path(r'^(?P<reckoning_uuid>\w+)/kitchen_count$', views.kitchen_count, name='kitchen_count'),
+
 
     re_path(r'^(?P<reckoning_uuid>\w+)/total_chek$', views.total_chek, name="total_chek"),
     re_path(r'^(?P<reckoning_uuid>\w+)/for_print$', specification_main_view, name='view'),  # распечатать спецификацию
