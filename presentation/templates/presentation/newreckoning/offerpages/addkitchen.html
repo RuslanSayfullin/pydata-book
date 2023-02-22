@@ -17,7 +17,7 @@
                 </div>
                 <br>
 
-                <form method="post" enctype="multipart/form-data" action="{% url 'presentation:addkitchenofferpage' reckoning.uuid %}">
+                <form method="post" enctype="multipart/form-data" action="{% url 'presentation:add_kitchen_offer_page' reckoning.uuid %}">
                     {% csrf_token %}
                     <div class="form-error">{{ form.non_field_errors }}</div>
                     {% for f in form %}
