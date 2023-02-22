@@ -130,3 +130,7 @@ dmypy.json
 
 # passwords
 backend/psw.py
+
+# media
+media/costcalculation
+media/sketch
