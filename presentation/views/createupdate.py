@@ -77,6 +77,13 @@ def kitchen_count(request, reckoning_uuid):
     return HttpResponse(count)
 
 
+def kitchen_offer_page_view(request, kitchenofferpage_id):
+    kitchenofferpage = get_object_or_404(KitchenOfferpage, id=kitchenofferpage_id)
+    template = 'presentation/newreckoning/offerpages/addkitchen_print.html'
+    return render(request, template, {
+        'kitchenofferpage': kitchenofferpage,
+    })
+
 
 
 

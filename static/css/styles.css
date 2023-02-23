@@ -21,6 +21,9 @@ body,
 }
 /* footer */
 
+.forprintfontfamily {
+    font-family: 'Montserrat', sans-serif;
+}
 .reckoningunit {
     margin-bottom: 20px;
     background-color: #fff;

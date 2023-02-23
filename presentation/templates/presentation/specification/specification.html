@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="{% static 'print_blank/print_blank_2/base.min.css' %}?v=1"/>
 <link rel="stylesheet" href="{% static 'print_blank/print_blank_2/fancy.min.css' %}?v=1"/>
 <link rel="stylesheet" href="{% static 'print_blank/print_blank_2/main.css' %}?v=1"/>
-<!--<link rel="preconnect" href="https://fonts.gstatic.com">-->
-<!--<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <script src="{% static 'print_blank/print_blank_2/compatibility.min.js' %}?v=1"></script>
 <script src="{% static 'print_blank/print_blank_2/theViewer.min.js' %}?v=1"></script>
 <script>
@@ -20,53 +20,51 @@ theViewer.defaultViewer = new theViewer.Viewer({});
 <style>@media print{@page {size: landscape; margin-top:-0.1cm}}</style>
 </head>
 <body>
-<div id="sidebar">
-    <div id="outline">
+<div class="forprintfontfamily">
+    <div id="sidebar">
+        <div id="outline"></div>
     </div>
-</div>
-<div id="page-container">
-<div id="pf1" class="pf w0 h0" data-page-no="1">
-    <div class="pc pc1 w0 h0">
-        <img class="bi x0 y0 w1 h1" alt="" src="{% static 'print_blank/print_blank_2/bg1.png' %}"/>
+    <div id="page-container">
+        <div id="pf1" class="pf w0 h0" data-page-no="1">
+            <div class="pc pc1 w0 h0">
+                <img class="bi x0 y0 w1 h1" alt="" src="{% static 'print_blank/print_blank_2/bg1.png' %}"/>
 
-        <div class="t m0 x2 h3 fs1 fc6 sc0 ls0 w2">
-            <table border="1" cellpadding="30" cellspacing="0" width="100%">
-                <tbody>
-                    <tr class="fc2">
-                        <td align="center" style="vertical-align: top;" width="33%">Наименование</td>
-                        <td align="center" style="vertical-align: top;" width="33%">Стоимость</td>
-                        <td align="center" style="vertical-align: top;" width="33%">Стоимость со скидкой</td>
-                    </tr>
-                    {% for key, num in specification_chek.items %}
-                    <tr>
-                        <td align="center"><v>{{ num.spec_nomination|default:' ' }}</v></td>
-                        <td align="center"><v>{{ num.spec_price|default:' ' }}</v></td>
-                        <td align="center"><v>{{ num.spec_discounted_price|default:' ' }}</v></td>
-                    </tr>
-                    {% endfor %}
+                <div class="t m0 x2 h3 fs1 fc6 sc0 ls0 w2">
+                    <table border="1" cellpadding="30" cellspaciёng="0" width="100%">
+                        <tbody>
+                            <tr class="fc2">
+                                <td align="center" style="vertical-align: top;" width="33%">Наименование</td>
+                                <td align="center" style="vertical-align: top;" width="33%">Стоимость</td>
+                                <td align="center" style="vertical-align: top;" width="33%">Стоимость со скидкой</td>
+                            </tr>
+                            {% for key, num in specification_chek.items %}
+                            <tr>
+                                <td align="center"><v>{{ num.spec_nomination|default:' ' }}</v></td>
+                                <td align="center"><v>{{ num.spec_price|default:' ' }}</v></td>
+                                <td align="center"><v>{{ num.spec_discounted_price|default:' ' }}</v></td>
+                            </tr>
+                            {% endfor %}
 
-                    <tr>
-                        <td align="center">Итого</td>
-                        <td align="center"><v>{{ reckoning.total_price|default:'0' }}</v> р.</td>
-                        <td align="center" class="fc2"><v>{{ reckoning.total_discounted_price|default:'0' }}</v> р.</td>
-                    </tr>
-                </tbody>
-            </table>
+                            <tr>
+                                <td align="center">Итого</td>
+                                <td align="center"><v>{{ reckoning.total_price|default:'0' }}</v> р.</td>
+                                <td align="center" class="fc2"><v>{{ reckoning.total_discounted_price|default:'0' }}</v> р.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="t m0 x3 h4 fs5 fc6 sc0 ls0 w2">
+                    <p>{{ reckoning.designer.get_full_name }}                 {{ reckoning.designer.email }}                     {{ reckoning.designer.staff.phone }} </p>
+                </div>
+
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
         </div>
-
-        <div class="t m0 x3 h4 fs5 fc6 sc0 ls0 w2">
-            <p>{{ reckoning.designer.get_full_name }}                 {{ reckoning.designer.email }}                     {{ reckoning.designer.staff.phone }} </p>
-        </div>
-
     </div>
-    <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
-</div>
-</div>
 
-<div class="loading-indicator"></div>
-<script>window.print();</script>
-<style>
-
-</style>
+    <div class="loading-indicator"></div>
+    <script>window.print();</script>
+</div>
 </body>
 </html>
