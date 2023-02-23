@@ -28,14 +28,14 @@ function press_add_kitchen_btn(reckoning_uuid){
     var add_comment_block = $('#add_kitchen_offerpage_'+reckoning_uuid);
     var comments_block = $('#kitchen_offerpages_'+reckoning_uuid);
     if (the_btn.attr('showed') == '0') {
-        the_btn.html('<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Закрыть ('+kitchen_count+')');
+        the_btn.html('<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Закрыть вкладку ('+kitchen_count+')');
         the_btn.attr('showed', '1');
         the_btn.addClass('btn-default');
         the_btn.removeClass('btn-success');
         load_add_kitchen_offerpage_form(reckoning_uuid);
         load_kitchen_offerpages(reckoning_uuid);
     } else {
-        the_btn.html('<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Добавить ('+kitchen_count+')');
+        the_btn.html('<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Кухонный гарнитур ('+kitchen_count+')');
         the_btn.attr('showed', '0');
         the_btn.removeClass('btn-default');
         the_btn.addClass('btn-success');
@@ -84,7 +84,7 @@ function load_kitchen_offerpages(reckoning_uuid){
 function add_new_kitchen_offerpages(reckoning_uuid, csrfmiddlewaretoken){
 	var comments_block = $("#kitchen_offerpages_"+reckoning_uuid);
 	var upperfacades = encodeURIComponent($("#id_upperfacades_"+reckoning_uuid).val());
-	var lowerfacades = encodeURIComponent($("#id_date_check_"+reckoning_uuid).val());
+	var lowerfacades = encodeURIComponent($("#id_lowerfacades_"+reckoning_uuid).val());
 	var tabletop = encodeURIComponent($("#id_tabletop_"+reckoning_uuid).val());
 	var other = encodeURIComponent($("#id_other_"+reckoning_uuid).val());
 	var accessories = encodeURIComponent($("#id_accessories_"+reckoning_uuid).val());

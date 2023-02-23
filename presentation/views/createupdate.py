@@ -22,6 +22,7 @@ def kitchen_offerpages_list(request, reckoning_uuid):
     """Список кухонных гарнитуров."""
     type_of_furniture = "Кухонный гарнитур"
     reckoning = get_object_or_404(Reckoning, uuid=reckoning_uuid)
+
     if request.method != "POST":
         form = AddKitchenOfferpageForm
     else:
@@ -29,8 +30,8 @@ def kitchen_offerpages_list(request, reckoning_uuid):
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.reckoning = reckoning
-            update_reckoning_specification(reckoning, new_form, type_of_furniture)
             new_form.save()
+            update_reckoning_specification(reckoning, new_form, type_of_furniture)
     kitchenofferpages = KitchenOfferpage.objects.filter(reckoning__uuid=reckoning_uuid).order_by('time_create').reverse()
     return render(request, 'presentation/newreckoning/offerpages/addkitchen_list.html', {'kitchenofferpages': kitchenofferpages, 'form': form, 'reckoning_uuid': reckoning_uuid})
 
@@ -39,6 +40,7 @@ def addkitchenofferpage(request, reckoning_uuid):
     """Добавить страницу к КП для кухонного гарнитура, к отдельным заявкам."""
     type_of_furniture = "Кухонный гарнитур"
     reckoning = get_object_or_404(Reckoning, uuid=reckoning_uuid)
+
     if request.method != "POST":
         form = AddKitchenOfferpageForm
         return render(request, 'presentation/newreckoning/offerpages/addkitchen.html',
@@ -48,8 +50,8 @@ def addkitchenofferpage(request, reckoning_uuid):
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.reckoning = reckoning
-            update_reckoning_specification(reckoning, new_form, type_of_furniture)
             new_form.save()
+            update_reckoning_specification(reckoning, new_form, type_of_furniture)
             return HttpResponseRedirect("offer_pages", {'reckoning_uuid': reckoning_uuid})
 
 
