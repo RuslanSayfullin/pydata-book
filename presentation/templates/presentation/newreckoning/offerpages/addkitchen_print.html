@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<link rel="stylesheet" href="{% static 'print_blank/print_blank_1/base.min.css' %}?v=1"/>
+<link rel="stylesheet" href="{% static 'print_blank/print_blank_1/fancy.min.css' %}?v=1"/>
+<link rel="stylesheet" href="{% static 'print_blank/print_blank_1/main.css' %}?v=1"/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<script src="{% static 'print_blank/print_blank_1/compatibility.min.js' %}?v=1"></script>
+<script src="{% static 'print_blank/print_blank_1/theViewer.min.js' %}?v=1"></script>
+<script>
+try{
+theViewer.defaultViewer = new theViewer.Viewer({});
+}catch(e){}
+</script>
+<title>Печать кухонный гарнитур</title>
+<style>@media print{@page {size: 100mm 200mm landscape; margin-top:-0.05cm;}}</style>
+</head>
+<body>
+<div class="forprintfontfamily">
+    <div id="sidebar">
+        <div id="outline"></div>
+    </div>
+    <div id="page-container">
+        <div id="pf1" class="pf w0 h0" data-page-no="1">
+            <div class="pc pc1 w0 h0">
+                <img class="bi x0 y0 w1 h1" alt="" src="{% static 'print_blank/print_blank_1/bg1.png' %}"/>
+
+                <div class="t m0 x2 h7 fs5 fc6 sc0 ls0 w3">
+                    {% if kitchenofferpage.sketch %}
+                        <p><img class="img-article-left thumb" src="{{ kitchenofferpage.sketch.url }}"></p>
+                    {% endif%}
+                </div>
+
+                <div class="t m0 x2 h6 fs5 fc6 sc0 ls0 w2">
+                    <table class="fc6" border="1" cellpadding="30" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr class="fc2">
+                                <td align="center" style="vertical-align: top;" width="33%">Наименование</td>
+                                <td align="center" style="vertical-align: top;" width="33%">Стоимость</td>
+                                <td align="center" style="vertical-align: top;" width="33%">Стоимость со скидкой</td>
+                            </tr>
+                            <tr>
+                                <td align="center">Кухонный гарнитур</td>
+                                <td align="center"><v>{{ kitchenofferpage.total_price|default:'0' }}</v> р.</td>
+                                <td align="center"><v>{{ kitchenofferpage.total_discounted_price|default:'0' }}</v> р.</td>
+                            </tr>
+                            <tr>
+                                <td align="center">&nbsp;</td>
+                                <td align="center"></td>
+                                <td align="center"></td>
+                            </tr>
+                            <tr>
+                                <td align="center">&nbsp;</td>
+                                <td align="center"></td>
+                                <td align="center"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="t m0 x3 h4 fs5 fc6 sc0 ls0 w2">
+                    <p>{{ kitchenofferpage.reckoning.designer.get_full_name }}                 {{ kitchenofferpage.reckoning.designer.email }}                     {{ kitchenofferpage.reckoning.designer.staff.phone }} </p>
+                </div>
+
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+    </div>
+
+    <div class="loading-indicator"></div>
+    <script>window.print();</script>
+</div>
+</body>
+</html>

@@ -1,85 +1,54 @@
 {% extends "appmain/base.html" %}
 {% load static %}
+{% load kitchen_offerpage_count from kitchenofferpge %}
 
 {% block content %}
+{% kitchen_offerpage_count reckoning.uuid as kitchen_offerpage_count %}
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <br>
-            <div class="accordion" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button type="button" id="addkitchenbtn_{{ reckoning.uuid }}" onclick="press_add_kitchen_btn('{{ reckoning.uuid }}');" showed="0" kitchen_count="{{ kitchen_offerpage_count }}" class="accordion-button collapsed btn btn-success add_kitchen_btn"  reckoninguuid="{{ reckoning.uuid }}" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Кухонный гарнитур
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <br>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col align-self-center">
-                                        <h3 class="text-muted">КП Кухонный гарнитур ({{ kitchen_offerpage_count }})</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-<!--                            <a class="btn btn-outline-success" href="{% url 'presentation:add_kitchen_offer_page' reckoning.uuid %}">-->
-<!--                                Создать-->
-<!--                            </a>-->
-                            <div id="add_kitchen_offerpage_{{ reckoning.uuid }}" class="kitchenoffer"></div>
-                            <br>
-                            <div id="kitchen_offerpages_{{ reckoning.uuid }}" class="kitchenoffer"></div>
-                        </div>
-                    </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="reckoningunit">
+                <div class="d-grid gap-2">
+                    <button type="button" id="addkitchenbtn_{{ reckoning.uuid }}" onclick="press_add_kitchen_btn('{{ reckoning.uuid }}');" showed="0" kitchen_count="{{ kitchen_offerpage_count }}" class="btn btn-info btn-lg add_kitchen_btn" reckoninguuid="{{ reckoning.uuid }}">
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Кухонный гарнитур ({{ kitchen_offerpage_count }})
+                    </button>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        Модульный диван, модель Эго (Ego)
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                    </div>
+                <br>
+                <div id="add_kitchen_offerpage_{{ reckoning.uuid }}" class="kitchenoffer"></div>
+                <br>
+                <div id="kitchen_offerpages_{{ reckoning.uuid }}" class="kitchenoffer"></div>
+
+
+
+
+                <div class="d-grid gap-2">
+                    <button type="button" id="addkitchenbtn1_{{ reckoning.uuid }}" onclick="press_add_kitchen_btn1('{{ reckoning.uuid }}');" showed="0" kitchen_count1="{{ kitchen_offerpage_count }}" class="btn btn-info btn-lgadd_kitchen_btn1" reckoninguuid="{{ reckoning.uuid }}">
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Модульный диван, модель Эго (Ego) ({{ kitchen_offerpage_count }})
+                    </button>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        Мягкая кровать, модель 7.1
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFour">
-                        <button class="accordion-button collapsed btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                        Шкаф встроенный
-                        </button>
-                    </h2>
-                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                    </div>
-                </div>
+                <br>
+                <div id="add_kitchen_offerpage1_{{ reckoning.uuid }}" class="kitchenoffer"></div>
+                <br>
+                <div id="kitchen_offerpages1_{{ reckoning.uuid }}" class="kitchenoffer"></div>
             </div>
         </div>
-    <br>
+        <div class="col-md-2"></div>
     </div>
 </div>
 <br>
-<br>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
             <div class="form-group text-left">
                 <div class="col-sm-offset-2">
                     <a class="btn btn-secondary" href="{% url 'presentation:total_chek' reckoning.uuid %}">Итоговая таблица</a>
                 </div>
             </div>
         </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

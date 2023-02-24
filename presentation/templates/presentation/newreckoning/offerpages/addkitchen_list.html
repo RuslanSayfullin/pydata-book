@@ -7,7 +7,13 @@
         {% for kitchenofferpage in kitchenofferpages %}
             <li class="reckoningunit">
                 <p>&nbsp;Кухонный гарнитур</p>
-                <p>&nbsp;Добавлен:<small><b>{{ kitchenofferpage.time_create|naturaltime }}</b> ({{ kitchenofferpage.time_create }})</small></p>
+                <p>&nbsp;Добавлен:<small><b>{{ kitchenofferpage.time_create|naturaltime }}</b> ({{ kitchenofferpage.time_create }})</small>&nbsp;Номер:<b>{{ kitchenofferpage.id }}</b></p>
+                <div class="form-group text-center">
+                    <div class="col-sm-offset-2">
+                        <a href="{% url 'presentation:kitchen_offer_page_view' kitchenofferpage.id %}" class="btn btn-info">Печать спецификаций</a>
+                    </div>
+                </div>
+                <br>
             </li>
             <br>
         {% endfor %}
