@@ -1,1 +1,0 @@
-from .pymymailru import *
