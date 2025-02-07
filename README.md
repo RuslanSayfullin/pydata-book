@@ -15,4 +15,7 @@
     $ python3 -m venv venv $ source venv/bin/activate (venv) $
 Установить зависимости из файла requirements.txt: 
     $ pip install -r requirements.txt
-
+Создать файл из уже установленных зависимостей:
+    $ pip freeze > requirements.txt
+Для запуска Jupyter выполните в терминале команду:
+    $ jupyter notebook
